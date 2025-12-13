@@ -1,0 +1,528 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --design-height: 900;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #111;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.top-nav {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.about { text-decoration: none; color: #111; }
+
+.viewport-scale {
+  /* height: 100vh;
+  overflow: hidden; */
+    width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;   /* ⬅️ IZINKAN SCROLL */
+
+}
+
+.page-wrapper {
+    background-image: url("images/all-line.png");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: 60px  350px;
+    transform-origin: top center;
+    transform: scale(
+        clamp(0.75, calc(100vh / var(--design-height)), 1)
+    );
+
+    width: 100%;
+}
+
+
+/* HERO SECTION */
+
+.hero {
+    margin-bottom: 200px;
+}
+
+
+.hero h1 {
+    margin-top: 100px;
+    font-size: 64px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500; /* Medium */
+}
+
+
+.subtitle {
+    margin-top: 8px;
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400; /* Medium */
+    color: #000000;
+}
+
+.cute-stars {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.cute-stars .star {
+    font-size: 50px;
+    color: black;
+    opacity: 0.8;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+/* Delay each star for wave effect */
+.cute-stars .star:nth-child(2) { animation-delay: .2s; }
+.cute-stars .star:nth-child(3) { animation-delay: .4s; }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* .btn-primary {
+    margin-top: 20px;
+    padding: 10px 28px;
+    font-size: 14px;
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 25px;
+    cursor: pointer;
+} */
+
+/* From Uiverse.io by Voxybuns */ 
+button {
+  /* Variables */
+  --button_radius: 1.5em;
+  --button_color: #ffffff;
+  --button_outline_color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+button:hover .button_top {
+  /* Pull the button upwards when hovered */
+  transform: translateY(-0.33em);
+}
+
+button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
+}
+
+
+
+/* WELCOME SECTION */
+.welcome {
+    margin-top: 10px;
+    margin-bottom: 200px;
+}
+
+.welcome h2 {
+    padding-top: 50px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.welcome h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.key-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 78px;
+    margin-top: 50px;
+}
+
+/* .key-card {
+    width: 150px;
+    padding: 20px;
+    border: 1.8px solid #000;
+    border-radius: 15px;
+}
+
+.key-card img {
+    width: 50px;
+} */
+
+
+.key-card {
+  --card_radius: 24px;
+  --card_color: #ffffff;
+  --card_outline_color: #000000;
+
+  width: 300px;        /* bebas, bisa kamu ubah */
+  height: 300px;
+  padding: 0;
+  background: var(--card_outline_color);
+  border-radius: var(--card_radius);
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.key-card-inner {
+  height: 300px;
+  box-sizing: border-box;
+  border: 2px solid var(--card_outline_color);
+  border-radius: var(--card_radius);
+  background: var(--card_color);
+  padding: 30px;
+  transform: translateY(-0.3em);
+  transition: transform 0.15s ease;
+  text-align: center;
+}
+
+.key-card:hover .key-card-inner {
+  transform: translateY(-0.45em);
+}
+
+.key-card:active .key-card-inner {
+  transform: translateY(0);
+}
+
+.key-card-img {
+  width: 141px;         /* bisa kamu ganti */
+  height: 165px;
+  border-radius: 0%;
+  margin-bottom: 16px;
+  object-fit: cover;
+  animation: floatKey 2.4s ease-in-out infinite;
+}
+
+@keyframes floatKey {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+
+.label {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* TREASURE STORY */
+.treasure-story {
+    margin-top: 70px;
+    margin-bottom: 200px;
+}
+
+
+.treasure-story h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.treasure-story h3 {
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+
+.story-list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* .story-card {
+    width: 140px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1.8px solid #000;
+} */
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+.story-card {
+  --card_radius: 24px;
+  --card_color: #ffffff;
+  --card_outline_color: #000000;
+
+  width: 300px;        /* bebas, bisa kamu ubah */
+  height: 350px;
+  padding: 0;
+  background: var(--card_outline_color);
+  border-radius: var(--card_radius);
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.story-card-inner {
+  height: 350px;
+  box-sizing: border-box;
+  border: 2px solid var(--card_outline_color);
+  border-radius: var(--card_radius);
+  background: var(--card_color);
+  padding: 35px;
+  transform: translateY(-0.3em);
+  transition: transform 0.15s ease;
+  text-align: center;
+}
+
+.story-card:hover .story-card-inner {
+  transform: translateY(-0.45em);
+}
+
+.story-card:active .story-card-inner {
+  transform: translateY(0);
+}
+
+.story-card-img {
+  width: 147px;         /* bisa kamu ganti */
+  height: 160px;
+  border-radius: 0%;
+  margin-bottom: 16px;
+  object-fit: cover;
+}
+
+
+.name { font-weight: 600; margin-top: 5px; font-size: 20px;}
+.role, .tag {
+    font-size: 18px;
+}
+
+
+/* CAMPUS SECTION */
+.campus-box {
+    --card_radius: 24px;
+    --card_color: #ffffff;
+    --card_outline_color: #000000;
+
+    width: 80%;           
+    margin: 0 auto 30px;
+    background: var(--card_outline_color);
+    border-radius: var(--card_radius);
+    padding: 0;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+
+.campus-box-inner {
+    width: 100%;
+    height: 350px;
+    box-sizing: border-box;
+
+    border: 2px solid var(--card_outline_color);
+    border-radius: var(--card_radius);
+    background: var(--card_color);
+
+    padding: 35px;
+
+    transform: translateY(-0.3em);
+    transition: transform 0.15s ease;
+
+    /* NO movement, NO animation
+    transform: none;
+    transition: none; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;       /* jarak circle */
+}
+
+
+
+.campus-list h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.campus-list h3 {
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+
+/* COMING SOON */
+.coming-soon {
+    margin-top: 250px;
+}
+
+.coming-soon h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.soft {
+    font-size: 14px;
+}
+
+.big-key {
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+.desc {
+    margin-top: 8px;
+    font-size: 20px;
+    color: #000000;
+}
+
+
+/* SPILL CALL */
+.spill-section {
+    margin-top: 300px;
+}
+
+.spill-section h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.btn-secondary {
+    margin-top: 25px;
+    padding: 10px 25px;
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+
+/* ABOUT US */
+.about-us {
+    margin-top: 350px;
+    padding: 40px 20px;
+}
+
+.about-us h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.logo-img {
+  border-radius: 0%;
+  margin-bottom: 16px;
+  object-fit: contain;
+  animation: floatKey 2.4s ease-in-out infinite;
+}
+
+.footer-logo {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.footer-desc {
+    max-width: 550px;
+    margin: 20px auto;
+    font-size: 13px;
+    color: #444;
+}
+
+.about-us {
+    margin-bottom: 50px;
+}
+
+.contact-us h3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600; /* Medium */
+}
+
+.contact-btns {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.contact-btn {
+    padding: 10px 20px;
+    border: 1.8px solid #000;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #111;
+    font-size: 14px;
+}
