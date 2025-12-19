@@ -234,7 +234,7 @@ button:active .button_top {
 
 .welcome h3 {
     margin-bottom: 2rem;
-    font-size: clamp(1.4rem, 2rem, 2.4rem);
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
@@ -281,7 +281,7 @@ button:active .button_top {
 }
 
 .key-card-inner {
-  height: 300px;
+  height: 100%;
   box-sizing: border-box;
   border: 2px solid var(--card_outline_color);
   border-radius: var(--card_radius);
@@ -559,6 +559,7 @@ button:active .button_top {
   border-radius: 0%;
   margin-bottom: 1.6rem;
   object-fit: contain;
+  width: 20rem;
   animation: floatKey 2.4s ease-in-out infinite;
 }
 
@@ -605,4 +606,57 @@ button:active .button_top {
     text-decoration: none;
     color: #111;
     font-size: clamp(1.4rem, 1.4rem, 1.4rem);
+}
+
+
+/* =========================================
+   KHUSUS TAMPILAN HP (MOBILE)
+   Agar Key Card jadi 2 Jejeran
+   ========================================= */
+@media (max-width: 480px) {
+    
+    /* 1. Kecilkan Gap di Wrapper */
+    .key-wrapper {
+        gap: 1.5rem;      /* Jarak antar kartu lebih rapat (15px) */
+        padding: 0 1.5rem; /* Padding kiri kanan layar */
+    }
+
+    /* 2. Atur Lebar Kartu jadi Setengah Layar */
+    .key-card {
+        /* Rumus: 50% lebar layar dikurangi setengah dari gap */
+        width: calc(50% - 0.75rem); 
+        
+        /* Tinggi kartu di-auto saja agar fleksibel, atau set lebih kecil */
+        height: auto; 
+        min-height: 22rem; 
+        margin-bottom: 0; /* Hapus margin bawah karena sudah ada gap flex */
+    }
+
+    /* 3. Sesuaikan Inner Card */
+    .key-card-inner {
+        /* PENTING: Jangan pakai 300px lagi, harus ngikutin parent */
+        height: 100%; 
+        width: 100%;
+        padding: 1.5rem; /* Padding dalam kartu dikecilin biar muat */
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 4. Kecilkan Gambar */
+    .key-card-img {
+        height: 12rem;      /* Tinggi gambar dikecilin (misal 80px) */
+        width: auto;       /* Lebar menyesuaikan proporsi */
+        max-width: 100%;   /* Jaga agar tidak keluar kotak */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* 5. Kecilkan Label Teks */
+    .label {
+        font-size: 1.1rem; /* Font lebih kecil sedikit */
+        line-height: 1.2;
+    }
 }
