@@ -3,10 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
 }
 
 :root {
   --design-height: 900;
+  font-size: 62.5%;
 }
 
 
@@ -19,18 +21,23 @@ body {
     color: #111;
     text-align: center;
     overflow-x: hidden;
+    font-size: 1.6rem; /* Default font size 16px */
+    line-height: 1.5;
 }
 
 /* HEADER */
 .top-nav {
     width: 100%;
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
+    padding: 2rem 5%;
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    align-items: center;
+    /* font-size: 14px; */
+    font-size: 1.4rem;
 }
 
-.about { text-decoration: none; color: #111; }
+.about { text-decoration: none; color: #111; font-weight: 500;}
 
 .viewport-scale {
   /* height: 100vh;
@@ -42,53 +49,105 @@ body {
 }
 
 .page-wrapper {
-    background-image: url("images/all-line.png");
-    background-repeat: no-repeat;
+    max-width: 1440px; /* Batas maksimal layar */
+    /* background-image: url("images/all-line.png"); */
+    /* background-repeat: no-repeat;
     background-size: 90%;
-    background-position: 60px  350px;
-    transform-origin: top center;
+    background-position: 60px  350px; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top 35rem;
+    background-position-y: 24rem;
+    /* transform-origin: top center;
     transform: scale(
         clamp(0.75, calc(100vh / var(--design-height)), 1)
-    );
-
+    ); */
+    margin: 0 auto;
     width: 100%;
+    position: relative;
 }
 
 
 /* HERO SECTION */
 
 .hero {
-    margin-bottom: 200px;
+    margin-bottom: 20rem;
+    padding: 0 2rem;
 }
 
 
 .hero h1 {
-    margin-top: 100px;
-    font-size: 64px;
+    margin-top: 8rem;
+    font-size: clamp(1.4rem, 6vw, 6.4rem);
     font-family: "Poppins", sans-serif;
-    font-weight: 500; /* Medium */
+    font-weight: 600; /* Medium */
+    line-height: 1.2;
 }
 
 
 .subtitle {
-    margin-top: 8px;
-    margin-bottom: 50px;
-    font-size: 24px;
     font-family: "Poppins", sans-serif;
-    font-weight: 400; /* Medium */
-    color: #000000;
+    font-weight: 400;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
+    color: #000;
+}
+
+/* Container agar posisi di tengah */
+.scroll-arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;   /* Jarak dari bintang */
+    margin-bottom: 4rem; /* Jarak ke judul Welcome */
+    opacity: 0.8;
+}
+
+/* 1. Animasi Garis (Path) */
+.arrow-path {
+    /* Angka pertama: panjang garis, Angka kedua: panjang spasi kosong */
+    stroke-dasharray: 10, 10; 
+    
+    /* Animasi berjalan */
+    animation: dashMove 1s linear infinite;
+}
+
+/* 2. Animasi Kepala Panah (Head) */
+.arrow-head {
+    /* Memberikan efek 'memantul' sedikit agar terlihat dinamis */
+    animation: headBounce 1s ease-in-out infinite;
+}
+
+/* DEFINISI ANIMASI */
+
+/* Membuat garis putus-putus bergerak ke bawah */
+@keyframes dashMove {
+    to {
+        stroke-dashoffset: -20; /* Nilai negatif agar arahnya ke bawah */
+    }
+}
+
+/* Membuat kepala panah naik turun halus */
+@keyframes headBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.5rem);
+    }
 }
 
 .cute-stars {
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    gap: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
 }
 
 .cute-stars .star {
-    font-size: 50px;
+    font-size: clamp(1.4rem, 3rem, 5rem);;
     color: black;
     opacity: 0.8;
     animation: bounce 1.4s infinite ease-in-out;
@@ -104,7 +163,7 @@ body {
         opacity: 0.7;
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-1rem);
         opacity: 1;
     }
 }
@@ -125,7 +184,8 @@ button {
   --button_radius: 1.5em;
   --button_color: #ffffff;
   --button_outline_color: #000000;
-  font-size: 20px;
+  /* font-size: 2rem; */
+  font-size: clamp(1.4rem, 2vw, 2.4rem);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -159,30 +219,37 @@ button:active .button_top {
 
 /* WELCOME SECTION */
 .welcome {
-    margin-top: 10px;
-    margin-bottom: 200px;
+    margin-top: 1rem;
+    margin-bottom: 10rem;
 }
 
 .welcome h2 {
-    padding-top: 50px;
-    margin-bottom: 20px;
-    font-size: 36px;
+    padding-top: 5rem;
+    margin-bottom: 2rem;
+    /* font-size: clamp(1.4rem, 2.6rem, 3.6rem); */
+    font-size:clamp(1.4rem, 6vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .welcome h3 {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 2rem;
+    font-size: clamp(1.4rem, 2rem, 2.4rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .key-wrapper {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     gap: 78px;
-    margin-top: 50px;
+    margin-top: 50px; */
+    display: flex;
+    flex-wrap: wrap; /* INI KUNCINYA: Biarkan elemen turun ke bawah jika layar sempit */
+    justify-content: center;
+    gap: 3rem; /* 30px */
+    margin-top: 5rem;
+    padding: 0 2rem;
 }
 
 /* .key-card {
@@ -198,18 +265,19 @@ button:active .button_top {
 
 
 .key-card {
-  --card_radius: 24px;
+  --card_radius: 2.4rem;
   --card_color: #ffffff;
   --card_outline_color: #000000;
 
-  width: 300px;        /* bebas, bisa kamu ubah */
-  height: 300px;
+  width: 30rem;        /* bebas, bisa kamu ubah */
+  height: 30rem;
   padding: 0;
   background: var(--card_outline_color);
   border-radius: var(--card_radius);
   display: inline-block;
   cursor: pointer;
   transition: transform 0.1s ease;
+  margin-bottom: 2rem;
 }
 
 .key-card-inner {
@@ -233,11 +301,12 @@ button:active .button_top {
 }
 
 .key-card-img {
-  width: 141px;         /* bisa kamu ganti */
-  height: 165px;
+  /* width: 14.1rem; */
+  height: 16.5rem;
+  width: clamp(1.4rem, 14.1rem, 14.1rem);
   border-radius: 0%;
-  margin-bottom: 16px;
-  object-fit: cover;
+  margin-bottom: 1.6rem;
+  object-fit: contain;
   animation: floatKey 2.4s ease-in-out infinite;
 }
 
@@ -246,35 +315,36 @@ button:active .button_top {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-1.2rem);
   }
 }
 
 
 .label {
-    margin-top: 8px;
-    font-size: 13px;
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
     font-weight: 500;
 }
 
 
 /* TREASURE STORY */
 .treasure-story {
-    margin-top: 70px;
-    margin-bottom: 200px;
+    margin-top: 7rem;
+    margin-bottom: 10rem;
 }
 
 
 .treasure-story h2 {
-    margin-bottom: 20px;
-    font-size: 36px;
+    margin-bottom: 2rem;
+    /* font-size: 36px; */
+    font-size:clamp(1.4rem, 6vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .treasure-story h3 {
-    margin-bottom: 50px;
-    font-size: 24px;
+    margin-bottom: 5rem;
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
@@ -283,8 +353,10 @@ button:active .button_top {
 .story-list {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-top: 25px;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding: 0 2rem;
 }
 
 /* .story-card {
@@ -295,35 +367,36 @@ button:active .button_top {
 } */
 
 .avatar {
-    width: 70px;
-    height: 70px;
+    width: 7rem;
+    height: 7rem;
     background: #ddd;
     border-radius: 50%;
-    margin: 10px auto;
+    margin: 1rem auto;
 }
 
 .story-card {
-  --card_radius: 24px;
+  --card_radius: 2.4rem;
   --card_color: #ffffff;
   --card_outline_color: #000000;
 
-  width: 300px;        /* bebas, bisa kamu ubah */
-  height: 350px;
+  width: 30rem;        /* bebas, bisa kamu ubah */
+  height: 35rem;
   padding: 0;
   background: var(--card_outline_color);
   border-radius: var(--card_radius);
   display: inline-block;
   cursor: pointer;
   transition: transform 0.1s ease;
+  margin-bottom: 2rem;
 }
 
 .story-card-inner {
-  height: 350px;
+  height: 35rem;
   box-sizing: border-box;
   border: 2px solid var(--card_outline_color);
   border-radius: var(--card_radius);
   background: var(--card_color);
-  padding: 35px;
+  padding: 3.5rem;
   transform: translateY(-0.3em);
   transition: transform 0.15s ease;
   text-align: center;
@@ -338,28 +411,28 @@ button:active .button_top {
 }
 
 .story-card-img {
-  width: 147px;         /* bisa kamu ganti */
-  height: 160px;
+  width: 14.7rem;         /* bisa kamu ganti */
+  height: 16rem;
   border-radius: 0%;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
   object-fit: cover;
 }
 
 
-.name { font-weight: 600; margin-top: 5px; font-size: 20px;}
+.name { font-weight: 600; margin-top: 0.5rem; font-size: 2rem;}
 .role, .tag {
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 
 /* CAMPUS SECTION */
 .campus-box {
-    --card_radius: 24px;
+    --card_radius: 2.4rem;
     --card_color: #ffffff;
     --card_outline_color: #000000;
 
-    width: 80%;           
-    margin: 0 auto 30px;
+    width: 90%;           
+    margin: 0 auto 3rem;
     background: var(--card_outline_color);
     border-radius: var(--card_radius);
     padding: 0;
@@ -371,14 +444,14 @@ button:active .button_top {
 
 .campus-box-inner {
     width: 100%;
-    height: 350px;
+    min-height: 35rem;
     box-sizing: border-box;
 
     border: 2px solid var(--card_outline_color);
     border-radius: var(--card_radius);
     background: var(--card_color);
 
-    padding: 35px;
+    padding: 3.5rem;
 
     transform: translateY(-0.3em);
     transition: transform 0.15s ease;
@@ -389,29 +462,31 @@ button:active .button_top {
 
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;       /* jarak circle */
+    gap: 2rem;       /* jarak circle */
 }
 
 
 
 .campus-list h2 {
-    margin-bottom: 20px;
-    font-size: 36px;
+    margin-bottom: 2rem;
+    /* font-size: 36px; */
+    font-size:clamp(1.4rem, 6vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .campus-list h3 {
-    margin-bottom: 50px;
-    font-size: 24px;
+    margin-bottom: 5rem;
+    font-size: clamp(1.4rem, 2.4rem, 2.4rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .circle {
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
     background: #ddd;
     border-radius: 50%;
 }
@@ -419,94 +494,99 @@ button:active .button_top {
 
 /* COMING SOON */
 .coming-soon {
-    margin-top: 250px;
+    margin-top: 15rem;
 }
 
 .coming-soon h3 {
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 3rem;
+    font-size: clamp(1.4rem, 6vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .soft {
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .big-key {
-    font-size: 50px;
-    margin: 20px 0;
+    font-size: 5rem;
+    margin: 2rem 0;
 }
 
 .desc {
-    margin-top: 8px;
-    font-size: 20px;
+    margin-top: 0.8rem;
+    font-size: clamp(1.4rem, 1.6rem, 2.4rem);
     color: #000000;
 }
 
 
 /* SPILL CALL */
 .spill-section {
-    margin-top: 300px;
+    margin-top: 20rem;
 }
 
 .spill-section h3 {
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 3rem;
+    font-size: clamp(1.4rem, 4vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .btn-secondary {
-    margin-top: 25px;
-    padding: 10px 25px;
+    margin-top: 2.5rem;
+    padding: 1rem 2.5rem;
     background: #fff;
     border: 2px solid #111;
-    border-radius: 25px;
+    border-radius: 2.5rem;
     cursor: pointer;
 }
 
 
 /* ABOUT US */
 .about-us {
-    margin-top: 350px;
-    padding: 40px 20px;
+    margin-top: 15rem;
+    padding: 4rem 2rem;
 }
 
 .about-us h3 {
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 3rem;
+    font-size: clamp(1.4rem, 6vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
 
 .logo-img {
   border-radius: 0%;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
   object-fit: contain;
   animation: floatKey 2.4s ease-in-out infinite;
 }
 
+.logo {
+    width: 10rem;
+  object-fit: contain;
+}
+
 .footer-logo {
-    font-size: 20px;
-    margin-top: 15px;
+    font-size: 2rem;
+    margin-top: 1.5rem;
 }
 
 .footer-desc {
-    max-width: 550px;
-    margin: 20px auto;
-    font-size: 13px;
+    max-width: 55rem;
+    margin: 2rem auto;
+    font-size: 1.3rem;
     color: #444;
 }
 
 .about-us {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
 .contact-us h3 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: clamp(1.4rem, 2vw, 3.6rem);
     font-family: "Poppins", sans-serif;
     font-weight: 600; /* Medium */
 }
@@ -514,15 +594,15 @@ button:active .button_top {
 .contact-btns {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-top: 15px;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 .contact-btn {
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border: 1.8px solid #000;
-    border-radius: 20px;
+    border-radius: 2rem;
     text-decoration: none;
     color: #111;
-    font-size: 14px;
+    font-size: clamp(1.4rem, 1.4rem, 1.4rem);
 }
